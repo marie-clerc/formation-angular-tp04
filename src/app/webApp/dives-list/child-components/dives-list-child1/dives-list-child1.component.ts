@@ -1,14 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dives } from '../../../../shared/class/dives';
 import { DivesListChild2Component } from '../dives-list-child2/dives-list-child2.component';
+import { VoirPlusPipe } from '../../../../shared/pipes/voir-plus.pipe';
 
 @Component({
   selector: 'app-dives-list-child1',
   templateUrl: './dives-list-child1.component.html',
   styleUrl: './dives-list-child1.component.scss',
   standalone:true,
-  imports:[
-    DivesListChild2Component
+  imports:[ 
+    DivesListChild2Component,
+    // le pipe de see more
+    VoirPlusPipe,
   ]
 })
 export class DivesListChild1Component {

@@ -1,4 +1,4 @@
- <h5>😀 {{infos}}</h5> 
+ <h5>😀 {{infos}}</h5>  
 
  <p class="alert alert-primary">
     <input type="checkbox" (change)="choixDive($event)">
@@ -6,7 +6,7 @@
 <!-- $event est l'objet global evenement -->
 
 <p class="alert alert-primary">Lieu : {{inputDive.location}}</p>
-<p class="alert alert-primary">Description : {{inputDive.description}}</p>
+<p class="alert alert-primary">Description : {{inputDive.description | voirPlus:35:'... lire la suite'}}</p>
 <img src="{{inputDive.photo}}" class="card-img-top">
 
 <!-- TP : appel compsant <app-dives-list-child2> -->
