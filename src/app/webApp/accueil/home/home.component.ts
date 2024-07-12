@@ -28,15 +28,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const array: string[] = ['Angular 18', 'React 18', 'Vue', 'NextJS', 'Vite'];
     // (array) on recupère un Obs
     this.infos$ = from(array)
-    .pipe(
-      delay(1500),
-      tap(
-        (formation:string) => {
-          console.log(formation);
+      .pipe(
+        delay(1500),
+        tap(
+          (formation: string) => {
+            console.log(formation);
 
-        }
-      )
-    );
+          }
+        )
+      );
 
     // this.infos$ = from(array)
     //   .pipe(
@@ -62,52 +62,74 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // creation de l'Observable #1 : btn PLUS
     // --------------------
     const plus$ = fromEvent(this.eltPlus.nativeElement, 'click')
-    .pipe(
-      startWith(0),
-      // permet de transformer les data
-      map(
-        () => {
-          return +1
-        }
-      ), 
-      // maintenant on veut cumuler les valeurs
-      scan(
-        (accu:number, newval:number) => {
-          return accu + newval
-        }
+      .pipe(
+        startWith(0),
+        // permet de transformer les data
+        map(
+          () => {
+            return +1
+          }
+        ),
+        // maintenant on veut cumuler les valeurs
+        scan(
+          (accu: number, newval: number) => {
+            return accu + newval
+          }
+        ),
+      //   tap(
+      //     (valObs) => {
+      //       console.log(valObs);
+      //       this.eltPanier.nativeElement.innerHTML = `${valObs} article(s) en panier`
+      //     }
+      // )
+
       )
-    )
-    .subscribe(
-      (valObs) => {
-        console.log(valObs);
-        this.eltPanier.nativeElement.innerHTML=`${valObs} article(s) en panier`
-      }
-    )
+      // .subscribe()
 
     // -------------------------------------
     // le button MOINS
-    
+
     const moins$ = fromEvent(this.eltMoins.nativeElement, 'click')
-    .pipe(
-      startWith(0),
-      // permet de transformer les data
-      map(
-        () => {
-          return -1
-        }
-      ), 
-      // maintenant on veut cumuler les valeurs
-      scan(
-        (accu:number, newval:number) => {
-          return accu + newval
+      .pipe(
+        startWith(0),
+        // permet de transformer les data
+        map(
+          () => {
+            return -1
+          }
+        ),
+        // maintenant on veut cumuler les valeurs
+        scan(
+          (accu: number, newval: number) => {
+            return accu + newval
+          }
+        ),
+        // tap(
+        //   (valObs) => {
+        //     console.log(valObs);
+        //     this.eltPanier.nativeElement.innerHTML = `${valObs} article(s) en panier`
+        //   }
+        // )
+      )
+      // .subscribe()
+
+
+    // --------------------------
+    // recombiner les 2 Observable ensemble : btn PLUS et MOINS
+    // --------------------------
+    combineLatest([plus$, moins$])
+      .pipe(
+        map(
+          ([valObs1, valObs2]) => {
+            return valObs1 + valObs2
+          }
+        )
+      )
+      .subscribe(
+        (valObsCombiened) => {
+          console.warn(valObsCombiened);
+           this.eltPanier.nativeElement.innerHTML = `${valObsCombiened} article(s) en panier`
         }
       )
-    )
-    .subscribe(
-      (valObs) => {
-        console.log(valObs);
-        this.eltPanier.nativeElement.innerHTML=`${valObs} article(s) en panier`
-      }
-    )
   }
 }
