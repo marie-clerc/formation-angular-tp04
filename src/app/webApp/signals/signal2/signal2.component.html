@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="alert alert-primary col-md-2">
+        Saisir le 1er nombre : <input type="number" class="form-control" [ngModel]="nb1()"
+            (ngModelChange)="nb1.set($event)">
+        Saisir le 2nd nombre : <input type="number" class="form-control" [ngModel]="nb2()"
+            (ngModelChange)="nb2.set($event)">
+    </div>
+
+    <div class="col-md-2">Signal 😀</div>
+
+    <div class="alert alert-warning col-md-2">{{result()}}</div>
+
+    <hr>
+
+</div>

@@ -1,0 +1,20 @@
+ <h5>😀 {{infos}}</h5> 
+
+ <p class="alert alert-primary">
+    <input type="checkbox" (change)="choixDive($event)">
+</p>
+<!-- $event est l'objet global evenement -->
+
+<p class="alert alert-primary">Lieu : {{inputDive.location}}</p>
+<p class="alert alert-primary">Description : {{inputDive.description}}</p>
+<img src="{{inputDive.photo}}" class="card-img-top">
+
+<!-- TP : appel compsant <app-dives-list-child2> -->
+<!-- Input -->
+<!-- affichera latitude, longitude, eval -->
+
+<div class="alert alert-danger">
+    <h5>Composant #2</h5>
+    <app-dives-list-child2
+     [inputDive2]="inputDive"></app-dives-list-child2>
+</div>

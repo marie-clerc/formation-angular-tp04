@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top primary">
+
+  <img width="70" alt="Angular Logo" src="./images/angular.png">
+  <!-- news Angular 18 : assets disparait au profit de public comme dans REACT 😆 -->
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="menu">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="''"><i class="bi bi-house-check"></i> Home Page</a>
+      </li>&nbsp;
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'compte-client'"><i class="bi bi-envelope"></i> Compte Client</a>
+      </li>&nbsp;
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'liste-des-plongees'"><i class="bi bi-envelope"></i> Liste des plongées</a>
+      </li>&nbsp;
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'les-signals-angular-17'"><i class="bi bi-envelope"></i> Les Signals - News NG 17-18</a>
+      </li>&nbsp;
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'nous-contactez'"><i class="bi bi-envelope"></i> Contacts</a>
+      </li>&nbsp;
+
+    </ul>
+
+    <button class="btn btn-warning" (click)="goBack()">Go Back</button>
+    
+  </div>
+</nav>

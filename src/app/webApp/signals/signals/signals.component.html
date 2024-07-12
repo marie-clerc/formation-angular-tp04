@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="alert alert-primary">
+        <h5 class="text-primary">Signal NG16-17-18</h5>
+
+        @for (i of nbStars; track $index) {
+        <img [src]="signalNb() >= i ? img2 : img1 ">
+        }
+
+        <p></p>
+        <button class="btn btn-warning" #moins><i class="bi bi-file-minus"></i></button> &nbsp;
+        &nbsp; <button class="btn btn-danger" #plus><i class="bi bi-file-plus"></i></button>
+        <p></p>
+        <p class="alert alert-warning"> {{infos()}}</p>
+    </div>
+
+
+    <div class="alert alert-warning">
+        <h5 class="text-warning">Composant #2 </h5>
+        <app-news-ng-17-18></app-news-ng-17-18>
+    </div>
+
+    <div class="alert alert-success">
+        <h5 class="text-warning">Composant #3 </h5>
+        <app-signal2></app-signal2>
+    </div>
+
+    <hr>
+</div>

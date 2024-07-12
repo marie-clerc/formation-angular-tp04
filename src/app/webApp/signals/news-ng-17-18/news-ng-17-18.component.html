@@ -1,0 +1,42 @@
+<!-- single way Binding : HTML => TS -->
+<button class="btn btn-primary" (click)="methodClic()">
+    Cliquez pour tester le single way binding...
+</button>
+&nbsp; 
+<strong>{{result}}</strong>
+
+&nbsp; 
+
+@if (flag) {
+    <img src="images/angular.png" style="width:85px">
+}
+
+<hr>
+
+<!-- [] : directives Single Way Binding (TS => HTML) -->
+<!-- ngModel appartient aux forms Angular -->
+<!-- Banana in a box [()] -->
+ 
+<select class="form-control" [(ngModel)]="codeCours">
+    <option value="">Choisir pour tester le double way binding</option>
+    <option value="NG">Angular ...</option>
+    <option value="REACT">React ...</option>
+    <option value="VUE">Vue ...</option>
+</select>
+
+<p></p>
+
+<div class="alert alert-primary">
+    @if (codeCours==="NG") {
+    <span>Vous avez choisi <strong>Angular</strong> ! c'est Bien 😎</span>
+    }
+    @else if (codeCours==="REACT") {
+    <span>Vous avez choisi <strong>React</strong> ! C'est Super aussi 😏</span>
+    }
+    @else if (codeCours==="VUE") {
+    <span>Vous avez choisi <strong>Vue</strong> ! Merci Evan You 😉</span>
+    }
+    @else {
+    <span>...</span>
+    }
+</div>
