@@ -5,6 +5,7 @@ import { LivraisonsComponent } from './webApp/compte-client/components-routing/l
 import { SignalsComponent } from './webApp/signals/signals/signals.component';
 import { DivesListComponent } from './webApp/dives-list/components/dives-list/dives-list.component';
 import { DivesDetailComponent } from './webApp/dives-list/components/dives-detail/dives-detail.component';
+import { ContactComponent } from './webApp/contact/contact/contact.component';
 
 
 export const routes: Routes = [
@@ -26,5 +27,11 @@ export const routes: Routes = [
             { path: 'mes-livraisons', component: LivraisonsComponent },
         ]
     },
+    {path:'nous-contacter', loadComponent: 
+        () => import('./webApp/contact/contact/contact.component')
+        .then(
+            (c) => c.ContactComponent
+        ), title: 'Nous Contacter'},
+        
     {path:'**', redirectTo:'',title:'Page Introuvable !'}
 ];
