@@ -78,12 +78,22 @@ export class ContactComponent implements AfterViewInit {
 
   // lifecycle
   ngAfterViewInit(): void {
+ 
+    const eltIcone = <HTMLElement>document.querySelector('#icone-prenom');
+   
     this.monForm.controls['firstName'].valueChanges
     .pipe()
     .subscribe(
       (field:any) => {
         console.log(field);
+        if (field.length <= 2 || field.length >= 10) {
+          eltIcone.style.color = 'red';
+        } else {
+          eltIcone.style.color = 'green';
+        }
+       
       }
     )
+   
   }
 }
