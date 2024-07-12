@@ -15,15 +15,18 @@ import { Signal2Component } from '../signal2/signal2.component';
 })
 export class SignalsComponent {
    //  1- propriétés
+   // etoile contour
    public img1: string = 'images/star-contour.png';
+   // etoile pleine
    public img2: string = 'images/star-plein.png';
    public nbStars: number[] = [1, 2, 3, 4, 5];
  
-   //signal
+   //signal init
    public signalNb = signal(3);
 
+   // computed = possible de transformer la value
    public infos = computed(
-    () => `${this.signalNb() *2 } /10  étoiles attribuée(s) !`)
+    () => `${this.signalNb() *4 } /20  étoiles attribuée(s) !`)
 
    //viewChildren
    @ViewChild('plus') eltPlus!: ElementRef<HTMLElement>;
@@ -31,14 +34,14 @@ export class SignalsComponent {
  
 
    constructor(){
-    // effect(
-    //   // avertisseur : témoin batterie tél
-    //   () => {
-    //     console.log('Effect', this.signalNb());
-    //     if (this.signalNb() >5 ) {
-    //       this.signalNb.set(5); }        
-    //   },{ allowSignalWrites: true }
-    // )
+    effect(
+      // avertisseur : témoin batterie tél
+      () => {
+        console.log('Effect', this.signalNb());
+        if (this.signalNb() >5 ) {
+          this.signalNb.set(5); }        
+      },{ allowSignalWrites: true }
+    )
    }
    ngAfterViewInit() {
      // --------------------------

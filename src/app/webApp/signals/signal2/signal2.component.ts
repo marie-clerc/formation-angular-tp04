@@ -16,6 +16,7 @@ export class Signal2Component {
   result = computed(
       () => {
           console.log(typeof(parseInt(this.nb1()),0));        
+          // parseInt transforme en value
           return parseInt(this.nb1(),0) + parseInt(this.nb2(),0)
       }
   )
