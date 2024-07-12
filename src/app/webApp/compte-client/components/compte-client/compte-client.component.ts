@@ -11,7 +11,7 @@ import { HomeComponent } from '../home/home.component';
   imports: [
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
+    // HomeComponent,
     //  features
     RouterOutlet, RouterLink
     // RouterModule

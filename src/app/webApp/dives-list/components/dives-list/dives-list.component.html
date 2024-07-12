@@ -1,5 +1,10 @@
 <h3 class="alert alert-primary">Liste des plongées</h3>
 
+<div class="row">
+    <label for="">Filtre</label>
+    <input type="text"class=form-control [(ngModel)]="texteSaisi">
+</div>
+
 <!-- 1nde ligne : Panier -->
 <div class="row">
     <div class="alert alert-success">
@@ -11,7 +16,7 @@
 
     <div class="row">
 
-        @for (dive of dives; track $index) {
+        @for (dive of dives | pipeFilter:texteSaisi; track $index) {
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">

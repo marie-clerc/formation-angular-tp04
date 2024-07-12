@@ -4,7 +4,9 @@ import { Dives } from '../../../../shared/class/dives';
 import { Subscription } from 'rxjs';
 import { DivesListChild1Component } from '../../child-components/dives-list-child1/dives-list-child1.component';
 import { RouterLink } from '@angular/router';
-import { NgForOf} from '@angular/common';
+import { NgForOf} from '@angular/common'; 
+import { FormsModule } from '@angular/forms';
+import { DivesPipe } from '../../../../shared/pipes/filter.pipe'
 
 @Component({
   selector: 'app-dives-list',
@@ -12,8 +14,11 @@ import { NgForOf} from '@angular/common';
   styleUrl: './dives-list.component.scss',
   standalone:true,
   imports:[
-    DivesListChild1Component,
-  RouterLink]
+    DivesListChild1Component, // composant
+    RouterLink,// feauture simple de routerModule
+    FormsModule, // toute la bibliothèque ...
+    DivesPipe, // une pipe
+  ]
 })
 export class DivesListComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
   // 1- props
@@ -22,6 +27,7 @@ export class DivesListComponent implements OnInit, OnDestroy, AfterViewInit, Aft
   @ViewChildren('btnPlus') eltCollectionBtn!:QueryList<ElementRef>;
   public infosTexte:string='Formation Angular';
   public panier:Dives[]=[];
+  public texteSaisi:string='';
 
   // 2- const 
   constructor(private _service: DivesService) {}

@@ -8,7 +8,9 @@ import { provideHttpClient } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
+    // les routes sont fournies au niveau racine
     provideRouter(routes),
-     provideAnimationsAsync(),
+    provideAnimationsAsync(),
+    // le HTTPClient est fourni globalement à l'application
     provideHttpClient()]
 };

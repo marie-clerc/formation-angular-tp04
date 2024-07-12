@@ -10,11 +10,11 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   imports: [
     // comp, directives, pipes
     HeaderComponent,
-    HomeComponent,
+    // HomeComponent,
     FooterComponent,
    
     // module complet
-    // RouterModule
+    // RouterModule,
 
      // features
     RouterOutlet
