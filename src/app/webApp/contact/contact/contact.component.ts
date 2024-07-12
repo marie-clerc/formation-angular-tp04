@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -22,7 +22,7 @@ import { PostService } from '../../../shared/services/post.service';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit {
 
   // 1- props
   public monForm:FormGroup 
@@ -73,5 +73,17 @@ export class ContactComponent {
     console.log('adress: ', this.monForm.controls['adresse'].value);
     this._service.postForm(this.monForm)
     
+  }
+
+
+  // lifecycle
+  ngAfterViewInit(): void {
+    this.monForm.controls['firstName'].valueChanges
+    .pipe()
+    .subscribe(
+      (field:any) => {
+        console.log(field);
+      }
+    )
   }
 }
