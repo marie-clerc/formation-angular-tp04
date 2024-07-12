@@ -36,12 +36,11 @@ export class ContactComponent {
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(20)
-        ]
-      ),
+        ]),
       email: new FormControl<string | null>(
         // validators par défault
         null, [
-          Validators.required,
+          // Validators.required,
           // Validators.email,
           // ^:commence par
         // $: finit par
@@ -51,11 +50,27 @@ export class ContactComponent {
         // + : 1 ou plusieurs fois
         // * : 0 ou plusieurs fois
         // {val min , val max } : pour répéter
-          Validators.pattern('^[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,}$'),
+          // Validators.pattern('^[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,}$'),
         ]),
       lastName: new FormControl<string | null>(
         // validators par défault
         null),
+        adresse: new FormGroup({
+          rue: new FormControl<string | null>(null),
+          ville: new FormControl<string | null>(null, 
+            // Validators.required
+          ),
+          cp: new FormControl<string | null>(null),
+        }),
     })
+  }
+
+
+  // méthods
+  public onSubmit(){
+    console.log(this.monForm.value);
+    console.log('adress: ', this.monForm.controls['adresse'].value);
+    
+    
   }
 }

@@ -1,6 +1,6 @@
 <h5>Les Réactives Forms
 
-    <form [formGroup]="monForm">
+    <form [formGroup]="monForm" (submit)="onSubmit()">
         <mat-icon id="icone-prenom">face</mat-icon>&nbsp;
         <mat-form-field>
             <mat-label>Votre prénom :</mat-label>
@@ -28,11 +28,15 @@
         </p>
 
         <!-- TP : add 2 champs (controls) lastName et email (validators.email) -->
+        
+        <mat-icon id="icone-nom">peerson</mat-icon>&nbsp;
         <mat-form-field>
             <mat-label>Votre nom :</mat-label>
             <input matInput type="text" formControlName="lastName">
         </mat-form-field>
         <br>
+        
+        <mat-icon id="icone-email">email</mat-icon>&nbsp;
         <mat-form-field>
             <mat-label>Votre email :</mat-label>
             <input matInput type="email" formControlName="email">
@@ -41,6 +45,35 @@
 
         <br>
 
+
+        <!-- Groupe -->
+        <h5>Adresse :</h5>
+        <div formGroupName="adresse" class="alert alert-primary">
+            <div>
+                <mat-icon>traffic</mat-icon>&nbsp;
+                <mat-form-field>
+                    <mat-label>Saisir votre rue :</mat-label>
+                    <input matInput type="text" formControlName="rue">
+                </mat-form-field>
+                <p></p>
+            </div>
+            <div>
+                <mat-icon>traffic</mat-icon>&nbsp;
+                <mat-form-field>
+                    <mat-label>Saisir votre ville :</mat-label>
+                    <input matInput type="text" formControlName="ville">
+                </mat-form-field>
+                <p></p>
+            </div>
+            <div>
+                <mat-icon>traffic</mat-icon>&nbsp;
+                <mat-form-field>
+                    <mat-label>Saisir votre cp :</mat-label>
+                    <input matInput type="text" formControlName="cp">
+                </mat-form-field>
+                <p></p>
+            </div>
+        </div>
 
         <button mat-flat-button type="submit" [disabled]="!monForm.valid">Submit</button>
     </form>
