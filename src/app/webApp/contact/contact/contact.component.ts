@@ -4,6 +4,7 @@ import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
+import { PostService } from '../../../shared/services/post.service';
 
 @Component({
   selector: 'app-contact',
@@ -27,7 +28,7 @@ export class ContactComponent {
   public monForm:FormGroup 
 
   // 2 - const
-  constructor(){
+  constructor(private _service:PostService){
     this.monForm = new FormGroup({
       // définition de tous les controls de formulaire
       firstName: new FormControl<string | null>(
@@ -70,7 +71,7 @@ export class ContactComponent {
   public onSubmit(){
     console.log(this.monForm.value);
     console.log('adress: ', this.monForm.controls['adresse'].value);
-    
+    this._service.postForm(this.monForm)
     
   }
 }
