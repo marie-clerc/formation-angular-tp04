@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {RouterTestingModule } from '@angular/router/testing';
 
-
+// describe permet de créer un obj de test unitaire
 describe('AppComponent', () => {    
 
     beforeEach(async () => {
