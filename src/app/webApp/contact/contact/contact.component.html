@@ -1,1 +1,46 @@
-<p>contact works!</p>
+<h5>Les Réactives Forms
+
+    <form [formGroup]="monForm">
+        <mat-icon id="icone-prenom">face</mat-icon>&nbsp;
+        <mat-form-field>
+            <mat-label>Votre prénom :</mat-label>
+            <input matInput type="text" formControlName="firstName">
+        </mat-form-field>
+        <br>
+
+        <!-- Toutes ces propriétés sont disponibles en Template Driven Form -->
+        <!-- <div class="alert alert-warning">
+            Prénom (value) : {{monForm.controls['firstName'].value}}
+
+            <br> - Prénom (Touched) : {{monForm.controls['firstName'].touched}}
+            <br> - Prénom (Pristine) : {{monForm.controls['firstName'].pristine}}
+            <br> - Prénom (Dirty) : {{monForm.controls['firstName'].dirty}}
+            <br> - Prénom (Valid) : {{monForm.controls['firstName'].valid}}
+        </div> -->
+
+        <!-- on affiche si valid-faux et le champ a été touché -->
+        @if (monForm.controls['firstName'].touched && !monForm.controls['firstName'].valid) {
+        <p class="text-danger"> *<em> le champ doit comporter 3 caractères minimum </em>*</p>
+        }
+
+        <p [hidden]="!monForm.controls['firstName'].valid" style="color:#1c8032">
+            Le champ prénom est validé !
+        </p>
+
+        <!-- TP : add 2 champs (controls) lastName et email (validators.email) -->
+        <mat-form-field>
+            <mat-label>Votre nom :</mat-label>
+            <input matInput type="text" formControlName="lastName">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Votre email :</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+
+        <br>
+
+
+        <button mat-flat-button type="submit">Submit</button>
+    </form>

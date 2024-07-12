@@ -1,12 +1,61 @@
 import { Component } from '@angular/core';
+import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [
+    // feature ou les libs angular
+    ReactiveFormsModule,
+    // material design
+    MatIcon,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatButton,
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
 
+  // 1- props
+  public monForm:FormGroup 
+
+  // 2 - const
+  constructor(){
+    this.monForm = new FormGroup({
+      // définition de tous les controls de formulaire
+      firstName: new FormControl<string | null>(
+        // validators par défault
+        null, [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20)
+        ]
+      ),
+      email: new FormControl<string | null>(
+        // validators par défault
+        null, [
+          Validators.required,
+          // Validators.email,
+          // ^:commence par
+        // $: finit par
+        // [a-z] : toutes les lettres en minuscule de a à z
+        // [a-zA-Z0-9] : toutes les lettres min et maj + les chiffres
+        // ? : on répéte 0 ou 1 fois
+        // + : 1 ou plusieurs fois
+        // * : 0 ou plusieurs fois
+        // {val min , val max } : pour répéter
+          Validators.pattern('^[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,}$'),
+        ]),
+      lastName: new FormControl<string | null>(
+        // validators par défault
+        null),
+    })
+  }
 }
